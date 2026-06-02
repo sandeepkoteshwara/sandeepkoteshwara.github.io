@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandeep K — Full-Stack .NET Team Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0e;
+    --ink2: #3a3a3a;
+    --ink3: #787878;
+    --paper: #f5f2ed;
+    --paper2: #ede9e2;
+    --paper3: #e3dfd7;
+    --accent: #1a6b5a;
+    --accent2: #c8e6df;
+    --accent-dark: #0d3f34;
+    --gold: #b8860b;
+    --rule: #ccc8c0;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245, 242, 237, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 6rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--ink2);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--ink3);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent2);
+    padding-left: 1rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent-dark); }
+
+  .btn-secondary {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink2);
+    border-bottom: 1px solid var(--ink2);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 4rem 6rem 2rem;
+    position: relative;
+  }
+
+  .hero-card {
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px;
+    right: -8px; bottom: -8px;
+    border: 1px solid var(--rule);
+    z-index: -1;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat { }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-num sup {
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+
+  .card-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 1.5rem 0;
+  }
+
+  .cert-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--ink2);
+  }
+
+  .cert-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-bg { background: var(--paper2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink2);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p strong { color: var(--ink); font-weight: 600; }
+
+  .about-aside { }
+
+  .aside-block {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .aside-block h4 {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .aside-block p, .aside-block li {
+    font-size: 0.85rem;
+    color: var(--ink2);
+    line-height: 1.7;
+  }
+
+  .aside-block ul { list-style: none; }
+  .aside-block ul li::before { content: '→ '; color: var(--accent); font-size: 0.75rem; }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-meta { }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--ink3);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-location {
+    font-size: 0.78rem;
+    color: var(--ink3);
+    font-style: italic;
+  }
+
+  .exp-content { }
+
+  .exp-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-project {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--ink2);
+    line-height: 1.75;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.65rem;
+    top: 0.25rem;
+  }
+
+  .exp-bullets li strong { color: var(--ink); font-weight: 600; }
+
+  /* ── SKILLS ── */
+  .skills-bg { background: var(--ink); }
+
+  .skills-bg .section-label { color: var(--accent2); }
+  .skills-bg .section-label::after { background: #333; }
+  .skills-bg .section-title { color: var(--paper); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: #1a1a1a;
+    border: 1px solid #2e2e2e;
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover { border-color: var(--accent); }
+
+  .skill-card-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #2e2e2e;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-pill {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+    background: #2a2a2a;
+    color: #ccc;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+  }
+
+  .skill-pill:hover { background: var(--accent); color: white; }
+
+  .skill-pill.highlight { background: var(--accent-dark); color: var(--accent2); }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover { transform: translateY(-3px); }
+  .project-card:hover::after { transform: scaleX(1); }
+
+  .project-client {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--ink2);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .stack-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    padding: 0.2rem 0.55rem;
+    background: var(--paper3);
+    color: var(--ink3);
+    border-radius: 2px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-bg {
+    background: var(--paper2);
+    border-top: 1px solid var(--rule);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-intro {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-intro em { color: var(--accent); font-style: italic; }
+
+  .contact-sub {
+    font-size: 0.9rem;
+    color: var(--ink3);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--ink2);
+    font-size: 0.9rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent2);
+  }
+
+  .contact-link-icon {
+    font-size: 1.1rem;
+    width: 1.5rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .contact-link:hover .contact-link-label { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--ink3);
+    text-align: center;
+    padding: 2rem 4rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer span { color: var(--accent2); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
+    .hero-right { padding: 2rem 1.5rem 4rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .section-inner { padding: 4rem 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-name { font-size: 2.8rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Sandeep K</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Available for opportunities</div>
+    <h1 class="hero-name">Sandeep<br><em>K.</em></h1>
+    <p class="hero-title">Full-Stack .NET Team Lead &nbsp;·&nbsp; 7+ Years</p>
+    <p class="hero-desc">
+      Building enterprise-grade .NET applications and leading engineering teams at Accenture. Specialised in ASP.NET Core, React, and Azure DevOps — with a track record delivering for Fortune 500 clients.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">ASP.NET Core</span>
+      <span class="tag">C#</span>
+      <span class="tag">React</span>
+      <span class="tag">Azure DevOps</span>
+      <span class="tag">SQL Server</span>
+      <span class="tag">Microservices</span>
+    </div>
+    <div class="hero-cta">
+      <a href="mailto:sandeepkoteshwar@gmail.com" class="btn-primary">Get in touch</a>
+      <a href="https://linkedin.com/in/sandeep-k-4a82799b" target="_blank" class="btn-secondary">LinkedIn →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">7<sup>+</sup></div>
+          <div class="stat-label">Years exp.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">8</div>
+          <div class="stat-label">Team size led</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <span>Microsoft Azure Fundamentals (AZ-900)</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <span>GitHub Copilot Certification</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <span>B.E. Electronics &amp; Communication — SJEC, 2019</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="section-inner">
+    <div class="section-label">About me</div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          I'm a <strong>Full-Stack .NET Team Lead</strong> based in Bengaluru with over 7 years of experience building scalable enterprise web applications. Currently at <strong>Accenture</strong>, I lead an 8-member development team delivering solutions for global clients including The Walt Disney Company.
+        </p>
+        <p>
+          My core stack is <strong>ASP.NET Core, C#, React, and SQL Server</strong> — but I'm just as comfortable owning the full release pipeline in Azure DevOps, writing optimised T-SQL stored procedures, or managing SharePoint On-Premise environments. I bring both the technical depth to architect solutions and the team leadership to ship them on time.
+        </p>
+        <p>
+          I've consistently achieved <strong>20%+ application performance improvements</strong>, reduced deployment errors through CI/CD automation, and maintained 99.9% uptime across production environments. Client relationships are something I take seriously — I've been rated "Exceeds Expectations" by stakeholders on multiple engagements.
+        </p>
+      </div>
+      <div class="about-aside fade-up">
+        <div class="aside-block">
+          <h4>Core strengths</h4>
+          <ul>
+            <li>Full-stack .NET architecture</li>
+            <li>Team leadership &amp; mentoring</li>
+            <li>RESTful API design</li>
+            <li>Azure DevOps CI/CD</li>
+            <li>Client-facing delivery</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <h4>Currently at</h4>
+          <p>Accenture — Packaged App Development Team Lead since March 2023</p>
+        </div>
+        <div class="aside-block">
+          <h4>Location</h4>
+          <p>Bengaluru, Karnataka, India<br>Open to relocation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-period">Mar 2023 — Present</div>
+          <div class="exp-company">Accenture</div>
+          <div class="exp-location">Bengaluru, India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Packaged App Development Team Lead</div>
+          <div class="exp-project">▸ The North Star Integration</div>
+          <ul class="exp-bullets">
+            <li>Delivered <strong>12+ feature enhancements</strong> using ASP.NET Core Web API + React, cutting average delivery cycle by ~25% through reusable component design.</li>
+            <li>Optimised RESTful APIs across 3 microservices, reducing inter-service latency by <strong>~15%</strong>.</li>
+            <li>Automated CI/CD pipelines in Azure DevOps across dev, staging, and production — saving ~<strong>4 hours per release cycle</strong> and eliminating manual deployment errors.</li>
+            <li>Led sprint planning, code reviews, and Agile ceremonies; mentored 3 junior developers, reducing their bug rate by <strong>30%</strong> within 2 sprints.</li>
+          </ul>
+          <div class="exp-project" style="margin-top:1.5rem;">▸ The Walt Disney Company</div>
+          <ul class="exp-bullets">
+            <li>Led an <strong>8-member cross-functional team</strong> delivering scalable web apps in ASP.NET Core MVC, C#, JavaScript/jQuery, Entity Framework, and SQL Server.</li>
+            <li>Designed secure RESTful APIs consumed by <strong>5+ downstream systems</strong>, reducing duplicated logic by ~35%.</li>
+            <li>Automated Nintex workflows on SharePoint On-Premise, cutting manual content approval time by <strong>~40%</strong>.</li>
+            <li>Maintained <strong>99.9% application uptime</strong> over 12 months via proactive monitoring and &lt;2hr MTTR on production incidents.</li>
+            <li>Rated <strong>"Exceeds Expectations"</strong> by client stakeholders across multiple sprint reviews.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-period">Nov 2021 — Mar 2023</div>
+          <div class="exp-company">Cognizant</div>
+          <div class="exp-location">India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Software Engineer</div>
+          <ul class="exp-bullets">
+            <li>Built microservices-based web applications using ASP.NET Core, EF Core, C#, and SQL Server handling <strong>10,000+ daily transactions</strong>.</li>
+            <li>Implemented RBAC, JWT authentication, and in-memory caching — improving API response time by <strong>25%</strong> and reducing auth incidents to zero.</li>
+            <li>Optimised database queries and authentication flows, contributing to a <strong>20% overall performance improvement</strong> across key modules.</li>
+            <li>Delivered sprint commitments at a <strong>95%+ completion rate</strong> across all Agile ceremonies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-period">Jun 2019 — Aug 2021</div>
+          <div class="exp-company">Fidrox Technologies</div>
+          <div class="exp-location">India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Software Developer</div>
+          <ul class="exp-bullets">
+            <li>Developed full-stack features across multiple client projects using ASP.NET MVC, Web Forms, SQL Server, and React.js.</li>
+            <li>Designed normalised database schemas and stored procedures, reducing report generation time by <strong>~30%</strong>.</li>
+            <li>Served as primary client liaison for 3 projects, achieving <strong>100% on-time delivery</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-bg" id="skills">
+  <div class="section-inner">
+    <div class="section-label">Stack</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">C#</span>
+          <span class="skill-pill highlight">JavaScript</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Frameworks</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">ASP.NET Core</span>
+          <span class="skill-pill highlight">React</span>
+          <span class="skill-pill">ASP.NET MVC</span>
+          <span class="skill-pill">Entity Framework Core</span>
+          <span class="skill-pill">Bootstrap</span>
+          <span class="skill-pill">Kendo UI</span>
+          <span class="skill-pill">Telerik</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Cloud &amp; DevOps</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Azure DevOps</span>
+          <span class="skill-pill highlight">CI/CD Pipelines</span>
+          <span class="skill-pill">Azure PaaS</span>
+          <span class="skill-pill">IIS</span>
+          <span class="skill-pill">Multi-env Deployments</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Architecture &amp; APIs</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">RESTful APIs</span>
+          <span class="skill-pill highlight">Microservices</span>
+          <span class="skill-pill">JWT / OAuth2</span>
+          <span class="skill-pill">SOLID Principles</span>
+          <span class="skill-pill">Clean Architecture</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Database</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">SQL Server</span>
+          <span class="skill-pill">Stored Procedures</span>
+          <span class="skill-pill">Query Optimisation</span>
+          <span class="skill-pill">SSMS</span>
+          <span class="skill-pill">Schema Design</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-title">Tools &amp; Methods</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Git</span>
+          <span class="skill-pill highlight">Agile / Scrum</span>
+          <span class="skill-pill">Visual Studio</span>
+          <span class="skill-pill">SharePoint</span>
+          <span class="skill-pill">Nintex</span>
+          <span class="skill-pill">GitHub Copilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Key Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-client">Accenture · 2026–Present</div>
+        <div class="project-name">North Star Integration</div>
+        <p class="project-desc">End-to-end feature delivery platform built with ASP.NET Core APIs and React. Responsible for architecture, CI/CD pipeline automation in Azure DevOps, and full release management across 3 environments.</p>
+        <div class="project-stack">
+          <span class="stack-tag">ASP.NET Core</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Azure DevOps</span>
+          <span class="stack-tag">SQL Server</span>
+          <span class="stack-tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-client">Accenture · Walt Disney Company · 2023–2026</div>
+        <div class="project-name">Disney Enterprise Web Platform</div>
+        <p class="project-desc">Led an 8-member team building scalable web applications for a global media enterprise. Delivered secure APIs consumed by 5+ downstream systems, automated SharePoint workflows, and maintained 99.9% production uptime.</p>
+        <div class="project-stack">
+          <span class="stack-tag">ASP.NET Core MVC</span>
+          <span class="stack-tag">C#</span>
+          <span class="stack-tag">jQuery</span>
+          <span class="stack-tag">EF Core</span>
+          <span class="stack-tag">SharePoint</span>
+          <span class="stack-tag">Nintex</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-client">Cognizant · 2021–2023</div>
+        <div class="project-name">Microservices Web Application</div>
+        <p class="project-desc">Built and maintained microservices-based applications handling 10,000+ daily transactions. Implemented RBAC, JWT auth, and in-memory caching strategies resulting in 25% API response time improvement.</p>
+        <div class="project-stack">
+          <span class="stack-tag">ASP.NET Core</span>
+          <span class="stack-tag">Microservices</span>
+          <span class="stack-tag">EF Core</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">SQL Server</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="section-label">Contact</div>
+        <p class="contact-intro">Let's build something <em>great</em> together.</p>
+        <p class="contact-sub">Open to senior engineering roles, team lead positions, and consulting opportunities. Based in Bengaluru — open to relocation or remote work.</p>
+        <a href="mailto:sandeepkoteshwar@gmail.com" class="btn-primary">Send an email</a>
+      </div>
+      <div class="contact-links fade-up">
+        <a href="mailto:sandeepkoteshwar@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <div>
+            <span class="contact-link-label">Email</span>
+            sandeepkoteshwar@gmail.com
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/sandeep-k-4a82799b" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            linkedin.com/in/sandeep-k-4a82799b
+          </div>
+        </a>
+        <a href="tel:+919591753969" class="contact-link">
+          <span class="contact-link-icon">✆</span>
+          <div>
+            <span class="contact-link-label">Phone</span>
+            +91 95917 53969
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Sandeep K</span> &nbsp;·&nbsp; Full-Stack .NET Team Lead &nbsp;·&nbsp; Bengaluru, India &nbsp;·&nbsp; Built with HTML &amp; CSS
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
